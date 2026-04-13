@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MajorHaul – Hauling & Removal Services</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8fbff; }
+
+nav { background: #0F1923; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; flex-direction: column; }
+.logo-name { display: flex; align-items: baseline; }
+.logo-major { color: #FF6B00; font-size: 21px; font-weight: 700; letter-spacing: -0.5px; }
+.logo-haul { color: #29ABE2; font-size: 21px; font-weight: 700; letter-spacing: -0.5px; }
+.logo-tag { font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 1px; text-transform: uppercase; margin-top: -2px; }
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.nav-wa { background: #25D366; color: #fff; font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 6px; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px; text-decoration: none; white-space: nowrap; }
+.nav-btn { background: #FF6B00; color: #fff; font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 6px; border: none; cursor: pointer; text-decoration: none; white-space: nowrap; }
+.wa-svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+@media(max-width:520px) {
+  nav { flex-direction: column; align-items: center; gap: 12px; }
+  .nav-right { justify-content: center; width: 100%; }
+}
+
+.hero {
+  position: relative;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('truck-hero.png');
+  background-size: cover;
+  background-position: center 40%;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(10,18,28,0.82) 0%, rgba(10,18,28,0.70) 60%, rgba(10,18,28,0.88) 100%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+.hero-badge { display:inline-flex; align-items:center; gap:10px; background:rgba(41,171,226,0.15); color:#29ABE2; font-size:11px; font-weight:600; padding:6px 16px; border-radius:20px; border:1px solid rgba(41,171,226,0.3); margin-bottom:22px; letter-spacing:0.5px; text-transform:uppercase; }
+.hero-badge-dot { width:4px; height:4px; border-radius:50%; background:rgba(41,171,226,0.6); flex-shrink:0; }
+.hero h1 { font-size: 38px; font-weight: 700; color: #fff; line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.8px; }
+.hero h1 em { color: #FF6B00; font-style: normal; }
+.hero p { color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.7; margin-bottom: 32px; }
+.hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-o { background: #FF6B00; color: #fff; font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+.btn-wa { background: #25D366; color: #fff; font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 8px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.btn-b { background: transparent; color: #29ABE2; font-size: 14px; font-weight: 500; padding: 13px 28px; border-radius: 8px; border: 1.5px solid rgba(41,171,226,0.45); cursor: pointer; text-decoration: none; display: inline-block; }
+
+.trust-strip { background: #FF6B00; padding: 13px 24px; display: flex; gap: 0; justify-content: center; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 8px; padding: 4px 16px; color: #fff; font-size: 13px; font-weight: 600; }
+.trust-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.55); flex-shrink: 0; }
+
+section { padding: 52px 24px; text-align: center; }
+.sec-white { background: #fff; }
+.sec-blue { background: #EAF6FD; }
+.sec-dark { background: #0F1923; }
+.sec-gray { background: #f4f7fb; }
+.eyebrow { font-size: 11px; font-weight: 600; color: #29ABE2; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 8px; }
+.sec-dark .eyebrow { color: #29ABE2; }
+h2 { font-size: 26px; font-weight: 700; color: #1a2533; margin-bottom: 10px; }
+.sec-dark h2 { color: #fff; }
+.sec-sub { font-size: 15px; color: #5a6a7a; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.sec-dark .sec-sub { color: rgba(255,255,255,0.5); }
+hr.div { border: none; border-top: 1px solid #e0edf5; }
+
+.svc-grid-top { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 14px; }
+.svc-grid-bot { display: grid; grid-template-columns: repeat(2, minmax(0, 240px)); gap: 14px; justify-content: center; }
+@media(max-width:640px) { .svc-grid-top { grid-template-columns: repeat(2,1fr); } }
+
+.svc-card { background: #fff; border: 1.5px solid #FFD4B0; border-radius: 12px; overflow: hidden; text-align: center; transition: border-color 0.15s; }
+.svc-card:hover { border-color: #FF6B00; }
+.svc-photo { width: 100%; height: 140px; object-fit: cover; object-position: center; display: block; }
+.svc-photo-placeholder { width: 100%; height: 140px; background: #FFF0E6; display: flex; align-items: center; justify-content: center; }
+.svc-photo-placeholder svg { width: 32px; height: 32px; }
+.svc-body { padding: 14px 12px 16px; }
+.svc-card strong { display: block; font-size: 14px; font-weight: 600; color: #1a2533; margin-bottom: 4px; }
+.svc-card span { font-size: 12px; color: #5a6a7a; line-height: 1.4; }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 900px; margin: 0 auto; }
+@media(max-width:600px) { .gallery-grid { grid-template-columns: 1fr; } }
+.gallery-item { border-radius: 12px; overflow: hidden; position: relative; }
+.gallery-item img { width: 100%; height: 220px; object-fit: cover; display: block; }
+.gallery-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(10,18,28,0.85)); padding: 20px 14px 12px; color: #fff; font-size: 13px; font-weight: 600; }
+
+.price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 760px; margin: 0 auto; }
+@media(max-width:640px) { .price-grid { grid-template-columns: 1fr; } }
+.price-card { background: #fff; border: 1px solid #ddeef8; border-radius: 12px; padding: 24px 20px; text-align: left; }
+.price-card.feat { border: 2px solid #FF6B00; }
+.price-label { font-size: 11px; font-weight: 600; color: #29ABE2; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.pbadge { background: #FF6B00; color: #fff; font-size: 10px; padding: 2px 8px; border-radius: 10px; }
+.price-num { font-size: 32px; font-weight: 700; color: #1a2533; line-height: 1; margin-bottom: 4px; }
+.price-num sup { font-size: 16px; vertical-align: top; margin-top: 6px; }
+.ptag { font-size: 12px; color: #FF6B00; font-weight: 600; margin-bottom: 10px; }
+.pdesc { font-size: 13px; color: #5a6a7a; margin-bottom: 14px; line-height: 1.5; }
+.pitems { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.pitems li { font-size: 13px; color: #5a6a7a; display: flex; align-items: flex-start; gap: 8px; }
+.pidot { width: 5px; height: 5px; border-radius: 50%; background: #FF6B00; margin-top: 5px; flex-shrink: 0; }
+.psub { font-size: 12px; color: #29ABE2; font-weight: 600; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e0edf5; }
+
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; }
+.step { text-align: center; }
+.step-n { width: 44px; height: 44px; border-radius: 50%; background: #29ABE2; color: #fff; font-size: 17px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+.step h4 { font-size: 15px; font-weight: 600; color: #1a2533; margin-bottom: 8px; }
+.step p { font-size: 13px; color: #5a6a7a; line-height: 1.6; }
+
+.form-wrap { max-width: 500px; margin: 0 auto; text-align: left; }
+.fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.fg label { font-size: 13px; color: rgba(255,255,255,0.6); }
+.fg input, .fg select, .fg textarea { font-size: 14px; padding: 11px 14px; border-radius: 8px; border: 1px solid rgba(41,171,226,0.25); background: rgba(255,255,255,0.06); color: #fff; width: 100%; }
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.28); }
+.fg select option { background: #1a2533; color: #fff; }
+.fg textarea { resize: vertical; min-height: 80px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media(max-width:480px) { .form-row { grid-template-columns: 1fr; } }
+.sub-btn { background: #FF6B00; color: #fff; font-size: 15px; font-weight: 600; padding: 14px; border-radius: 8px; border: none; cursor: pointer; width: 100%; margin-bottom: 10px; }
+.sub-btn:hover { background: #e55e00; }
+.wa-sub-btn { background: #25D366; color: #fff; font-size: 14px; font-weight: 600; padding: 13px; border-radius: 8px; border: none; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+.ok { display: none; background: rgba(41,171,226,0.12); border: 1px solid rgba(41,171,226,0.35); color: #29ABE2; padding: 14px; border-radius: 8px; font-size: 14px; text-align: center; margin-top: 12px; }
+.err { display: none; background: rgba(255,107,0,0.12); border: 1px solid rgba(255,107,0,0.35); color: #FF6B00; padding: 14px; border-radius: 8px; font-size: 14px; text-align: center; margin-top: 12px; }
+.contact-bottom { text-align: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+.contact-bottom p { color: rgba(255,255,255,0.4); font-size: 13px; margin-bottom: 10px; }
+.contact-links { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.contact-links a { color: #29ABE2; font-size: 13px; text-decoration: none; }
+
+footer { background: #080d12; padding: 24px; text-align: center; }
+footer p { color: rgba(255,255,255,0.3); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-name"><span class="logo-major">Major</span><span class="logo-haul">Haul</span></div>
+    <span class="logo-tag">Hauling &amp; Removal Services</span>
+  </div>
+  <div class="nav-right">
+    <a class="nav-wa" href="https://wa.me/12424377111?text=Hi!%20I%27d%20like%20a%20free%20quote%20from%20MajorHaul." target="_blank">
+      <svg class="wa-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a class="nav-btn" href="#getquote">Free quote</a>
+  </div>
+</nav>
+
+<!-- HERO with truck photo background -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span>Fast</span><span class="hero-badge-dot"></span>
+      <span>Affordable</span><span class="hero-badge-dot"></span>
+      <span>Reliable</span>
+    </div>
+    <h1>Need it gone?<br><em>One call does it all.</em></h1>
+    <p>One message, one truck, one less problem. MajorHaul picks up furniture, appliances, debris, and more — fast, affordable, and always on time.</p>
+    <div class="hero-btns">
+      <a class="btn-o" href="#getquote">Get a free quote</a>
+      <a class="btn-wa" href="https://wa.me/12424377111?text=Hi!%20I%27d%20like%20a%20free%20quote%20from%20MajorHaul." target="_blank">
+        <svg class="wa-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Message on WhatsApp
+      </a>
+      <a class="btn-b" href="#services">See what we haul</a>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item"><div class="trust-dot"></div>Same-day availability</div>
+  <div class="trust-item"><div class="trust-dot"></div>Upfront pricing</div>
+  <div class="trust-item"><div class="trust-dot"></div>Fast response</div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec-white" id="services">
+  <p class="eyebrow">Our services</p>
+  <h2>What we haul</h2>
+  <p class="sec-sub">No job too small. You name it, we'll haul it.</p>
+  <div class="svc-grid-top">
+    <div class="svc-card">
+      <img class="svc-photo" src="furniture-haul.jpeg" alt="Furniture haul">
+      <div class="svc-body">
+        <strong>Furniture</strong>
+        <span>Couches, beds, dressers, tables</span>
+      </div>
+    </div>
+    <div class="svc-card">
+      <img class="svc-photo" src="furniture-haul.jpeg" alt="Appliance removal" style="object-position: left center;">
+      <div class="svc-body">
+        <strong>Appliances</strong>
+        <span>Fridges, washers, dryers, ovens</span>
+      </div>
+    </div>
+    <div class="svc-card">
+      <img class="svc-photo" src="full-load.jpeg" alt="Junk and debris haul">
+      <div class="svc-body">
+        <strong>Junk &amp; debris</strong>
+        <span>Yard waste, clutter, trash bags</span>
+      </div>
+    </div>
+    <div class="svc-card">
+      <img class="svc-photo" src="full-load.jpeg" alt="Construction haul" style="object-position: center top;">
+      <div class="svc-body">
+        <strong>Construction</strong>
+        <span>Materials, demo waste, scrap</span>
+      </div>
+    </div>
+  </div>
+  <div class="svc-grid-bot">
+    <div class="svc-card">
+      <img class="svc-photo" src="car-tow.jpeg" alt="Car towing">
+      <div class="svc-body">
+        <strong>Car towing</strong>
+        <span>Sedans, minivans &amp; small engine vehicles</span>
+      </div>
+    </div>
+    <div class="svc-card">
+      <img class="svc-photo" src="truck-hero.png" alt="Moving help" style="object-position: center 30%;">
+      <div class="svc-body">
+        <strong>Moving help</strong>
+        <span>Local hauls &amp; pickups</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PRICING -->
+<section class="sec-blue" id="pricing">
+  <p class="eyebrow">Transparent pricing</p>
+  <h2>Simple, flat rates</h2>
+  <p class="sec-sub">Know what you'll pay before we show up. No surprises, ever.</p>
+  <div class="price-grid">
+    <div class="price-card feat">
+      <p class="price-label">Single item / One run <span class="pbadge">Flat rate</span></p>
+      <p class="price-num"><sup>$</sup>75</p>
+      <p class="ptag">One haul, pickup to drop-off</p>
+      <p class="pdesc">Covers furniture, appliances, and single-load jobs. One trip, done.</p>
+      <ul class="pitems">
+        <li><span class="pidot"></span>Sofa, chair, or dresser</li>
+        <li><span class="pidot"></span>Single appliance</li>
+        <li><span class="pidot"></span>Mattress or box spring</li>
+      </ul>
+      <p class="psub">Extra trips starting at $25–$65 depending on distance</p>
+    </div>
+    <div class="price-card">
+      <p class="price-label">Truck + Trailer</p>
+      <p class="price-num"><sup>$</sup>200</p>
+      <p class="ptag">Max load, one run</p>
+      <p class="pdesc">Truck and trailer fully loaded in one run. Best for large cleanouts.</p>
+      <ul class="pitems">
+        <li><span class="pidot"></span>Full home or property cleanout</li>
+        <li><span class="pidot"></span>Large construction debris</li>
+        <li><span class="pidot"></span>Multiple appliances &amp; furniture</li>
+      </ul>
+      <p class="psub">Additional runs starting at $100</p>
+    </div>
+    <div class="price-card">
+      <p class="price-label">Car towing</p>
+      <p class="price-num"><sup>$</sup>85</p>
+      <p class="ptag">Flat rate, local tow</p>
+      <p class="pdesc">Vehicle must roll on all four wheels and go into neutral. No immobile vehicles.</p>
+      <ul class="pitems">
+        <li><span class="pidot"></span>Sedans &amp; compact cars</li>
+        <li><span class="pidot"></span>Minivans &amp; small SUVs</li>
+        <li><span class="pidot"></span>Must roll &amp; shift to neutral</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:22px;font-size:13px;color:#5a6a7a;">All prices confirmed before any work begins. Free quote, always.</p>
+</section>
+
+<hr class="div">
+
+<!-- HOW IT WORKS -->
+<section class="sec-white">
+  <p class="eyebrow">The process</p>
+  <h2>How it works</h2>
+  <p class="sec-sub">Three simple steps to getting rid of your stuff.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">1</div>
+      <h4>Request a quote</h4>
+      <p>Fill out the form or message us on WhatsApp. Tell us what you need moved.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">2</div>
+      <h4>We confirm &amp; schedule</h4>
+      <p>We'll reach out fast with your price and a time that works for you.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">3</div>
+      <h4>We show up &amp; haul</h4>
+      <p>We arrive on time, load it up, and take care of the rest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="sec-dark" id="getquote">
+  <p class="eyebrow">Contact us</p>
+  <h2>Get your free quote</h2>
+  <p class="sec-sub">Fill out the form or message us on WhatsApp for the fastest response.</p>
+  <div class="form-wrap">
+    <form id="leadForm" action="https://formspree.io/f/xrerzjvr" method="POST">
+      <div class="form-row">
+        <div class="fg"><label>First name</label><input type="text" name="first_name" placeholder="John" required></div>
+        <div class="fg"><label>Last name</label><input type="text" name="last_name" placeholder="Smith"></div>
+      </div>
+      <div class="fg"><label>Phone number</label><input type="tel" name="phone" placeholder="(242) 000-0000" required></div>
+      <div class="fg">
+        <label>Service needed</label>
+        <select name="service" required>
+          <option value="">Select a service...</option>
+          <option>Single item / One run — $75</option>
+          <option>Truck + Trailer (full load) — $200</option>
+          <option>Car towing — $85</option>
+          <option>Multiple trips — price varies</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="fg"><label>Describe your job</label><textarea name="message" placeholder="What needs to be hauled? Where are you located?"></textarea></div>
+      <button type="submit" class="sub-btn">Send my request &rarr;</button>
+    </form>
+    <a class="wa-sub-btn" href="https://wa.me/12424377111?text=Hi!%20I%27d%20like%20a%20free%20quote%20from%20MajorHaul." target="_blank">
+      <svg class="wa-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Or message us on WhatsApp — fastest response
+    </a>
+    <div class="ok" id="ok">Your request is in! We'll be in touch shortly.</div>
+    <div class="err" id="err">Something went wrong. Please try WhatsApp instead.</div>
+    <div class="contact-bottom">
+      <p>Prefer to reach out directly?</p>
+      <div class="contact-links">
+        <a href="https://wa.me/12424377111" target="_blank">WhatsApp: (242) 437-7111</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><span style="color:#FF6B00;">Major</span><span style="color:#29ABE2;">Haul</span> &mdash; Hauling &amp; Removal Services &mdash; Nassau, Bahamas</p>
+</footer>
+
+<script>
+const form = document.getElementById('leadForm');
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = form.querySelector('.sub-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      document.getElementById('ok').style.display = 'block';
+      btn.textContent = 'Request sent!';
+      form.reset();
+    } else { throw new Error('fail'); }
+  } catch {
+    document.getElementById('err').style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Send my request →';
+  }
+});
+</script>
+</body>
+</html>
